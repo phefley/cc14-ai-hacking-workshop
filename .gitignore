@@ -205,3 +205,19 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+
+## Custom
+.env
+*-venv/
+__pycache__/
+*.pyc
+.DS_Store
+.idea/
+.vscode/
+*.log
+*.bin
+*.db
+*.sqlite3
+chroma_db/
+*-repo/
