@@ -1,5 +1,6 @@
 # CactusCon 14 - Hacking AI Chatbots
 
+[DRAFT - To be completed shortly]
 This is the the set of prereqs you'll want to have in place to get started.
 
 In the ollama directory, follow the instructions in [setup.md](ollama/setup.md). This is what you'll need to set up and do manual testing on the chatbot.
