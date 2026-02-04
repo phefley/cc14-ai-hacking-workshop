@@ -8,7 +8,7 @@ Microsoft AI RedTeaming Playground Lab: Spin up a docker container and connect i
   2. Create your project folder and navigate there. > mkdir project; cd project
   3. Clone the MSFT AI Redteaming Playground Labs repo > git clone https://github.com/microsoft/AI-Red-Teaming-Playground-Labs
   4. Navigate into the repo and run **docker-compose up**. This will build the containers, but it will not work yet.
-  5. During the workshop, we will set up the .env file and run **docker-compose up** again to rebuild it and use it. 
+During the workshop, we will set up the .env file and run **docker-compose up** again to rebuild it and use it. 
 
 Much of this workshop will focus on running and testing models locally with ollama.
 Follow the instructions in [setup.md](ollama/setup.md) before Cactuscon on Saturday.
