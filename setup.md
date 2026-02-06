@@ -1,6 +1,7 @@
-# Comprehensive Setup Guide
+# Setup Guide
 
-Do all of this at home before the workshop. Some downloads are large.
+Please do all of this at home before the workshop. Some downloads are large.
+It may not be reliable to download the required packages over conference wifi on the day.
 
 ## Prerequisites
 
@@ -24,7 +25,7 @@ Install the following:
     └── garak-repo/             # cloned NVIDIA garak
 ```
 
-## 1 — Clone the Repo
+## 1 — Clone this Repo
 
 ```bash
 mkdir -p ~/workshop && cd ~/workshop
