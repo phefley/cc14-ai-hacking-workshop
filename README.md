@@ -10,7 +10,7 @@ The examples we've prepared use [Ollama](https://ollama.com/) as the LLM support
 
 ## Setup
 
-You can find instructions for getting setup for the workshop [here](./ollama/setup.md).
+You can find instructions for getting setup for the workshop [here](./setup.md).
 
 ## Labs - Table of Contents
 
