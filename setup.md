@@ -7,7 +7,7 @@ It may not be reliable to download the required packages over conference wifi on
 
 Install the following:
 
-- **uv** — https://docs.astral.sh/uv/getting-started/installation/
+- **uv** — https://docs.astral.sh/uv/getting-started/installation/ -if you don't have python already, installing uv will install it.
 - **Git** — https://git-scm.com/downloads
 - **Ollama** — https://ollama.com/download
 
