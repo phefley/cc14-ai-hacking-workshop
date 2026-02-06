@@ -1,4 +1,6 @@
 # CactusCon 14 - Hacking AI Chatbots
+IMPORTANT -- updated setup instructions are [here](./setup.md).
+~~~~
 
 This is the the set of prereqs you'll want to have in place to get started.
 
