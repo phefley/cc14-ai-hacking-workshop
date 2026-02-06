@@ -82,7 +82,6 @@ python3 -m venv ./ollama-example-venv
 source ./ollama-example-venv/bin/activate
 pip install -r requirements.txt
 ```
-<<<<<<< HEAD
 
 ### Extra Setup Instructions
 
@@ -102,5 +101,3 @@ See [02.04-instructions.md](./02-hack-a-chatbot/02.04-giskard/02.04-instructions
 
 See [02.05-instructions.md](./02-hack-a-chatbot/02.05-pyrit/02.05-instructions.md).
 
-=======
->>>>>>> 63451c22d0613233181037b3ff8550b0a189e8e6
