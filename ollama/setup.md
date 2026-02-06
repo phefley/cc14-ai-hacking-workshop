@@ -35,10 +35,6 @@ You will also need a text embedder for the RAG portion:
 ollama pull nomic-embed-text
 ```
 
-And for the MCP portion, we will use llama3.1:8b, to compare model performance:
-```bash
-ollama pull llama3.1:8b
-```
 ### Interact with the model
 
 ```bash
