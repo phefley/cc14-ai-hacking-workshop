@@ -24,6 +24,7 @@ You can find instructions for getting setup for the workshop [here](./setup.md).
 * [01.06 - Retaining Chat Memory](./ollama/01-make-a-chatbot/01.06-langchain-memory/01.06-instructions.md)
 * [01.07 - Using RAG to Supplement Data](./ollama/01-make-a-chatbot/01.07-langgraph-rag/01.07-instructions.md)
 * [01.08 - Adding MCP Functionality](./ollama/01-make-a-chatbot/01.08-mcp/01.08-instructions.md)
+* [01.09 - Adding Agentic Tools - BONUS](./ollama/01-make-a-chatbot/01.09-langgraph-agentic/01.09-instructions.md)
 
 ### 02 - Hacking the Chatbot
 
