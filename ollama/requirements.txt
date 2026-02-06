@@ -8,3 +8,5 @@ uvicorn
 langchain-community
 chromadb
 langchain-text-splitters
+mcp
+nest_asyncio
