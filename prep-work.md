@@ -1,6 +1,5 @@
 # CactusCon 14 - Hacking AI Chatbots
 
-[DRAFT - To be completed shortly]
 This is the the set of prereqs you'll want to have in place to get started.
 
 Microsoft AI RedTeaming Playground Lab: Spin up a docker container and connect it to our Azure endpoint during the workshop.
