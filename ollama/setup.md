@@ -44,11 +44,8 @@ Show what models you have installed:
 ```bash
 ollama list
 ```
-<<<<<<< HEAD
 This helps confirm that everything is installed as you expect.
 You can also get more details about a specific model (this you may need to tailor to the model you installed).
-=======
->>>>>>> 63451c22d0613233181037b3ff8550b0a189e8e6
 
 ```bash
 ollama show llama3:8b
