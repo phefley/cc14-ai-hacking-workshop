@@ -5,9 +5,13 @@ This is the the set of prereqs you'll want to have in place to get started.
 
 Microsoft AI RedTeaming Playground Lab: Spin up a docker container and connect it to our Azure endpoint during the workshop.
   1. Make sure you have **Docker** installed.
-  2. Create your project folder and navigate there. > mkdir project; cd project
-  3. Clone the MSFT AI Redteaming Playground Labs repo > git clone https://github.com/microsoft/AI-Red-Teaming-Playground-Labs
-  4. Navigate into the repo and run **docker-compose up**. This will build the containers, but it will not work yet.
+     a. If you install Docker Desktop, this should be included. If you're using Linux, you can install the docker-compose-plugin from apt.
+        ```bash
+         sudo apt-get install docker-compose-plugin
+        ```
+  3. Create your project folder and navigate there. > mkdir project; cd project
+  4. Clone the MSFT AI Redteaming Playground Labs repo > git clone https://github.com/microsoft/AI-Red-Teaming-Playground-Labs
+  5. Navigate into the repo and run **docker-compose up**. This will build the containers, but it will not work yet.
 During the workshop, we will set up the .env file and run **docker-compose up** again to rebuild it and use it.
 
 Much of this workshop will focus on running and testing models locally with ollama.
