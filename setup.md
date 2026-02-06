@@ -10,12 +10,16 @@ Install the following:
 - **uv** — https://docs.astral.sh/uv/getting-started/installation/ -if you don't have python already, installing uv will install it.
 - **Git** — https://git-scm.com/downloads
 - **Ollama** — https://ollama.com/download
+- **Docker** — https://docs.docker.com/engine/install/
+  - Linux: also install the compose plugin — `sudo apt-get install docker-compose-plugin`
+  - Docker Desktop (Windows/macOS) includes compose already.
 
 ## Folder Structure
 
 ```
 ~/workshop/
 ├── cc14-ai-hacking-workshop/        # this repo
+├── AI-Red-Teaming-Playground-Labs/  # Microsoft AI red teaming lab
 ├── venvs/
 │   ├── ollama-venv/            # sections 1, 2.01–2.02, & 3
 │   ├── garak-venv/             # section 2.03
@@ -30,6 +34,7 @@ Install the following:
 ```bash
 mkdir -p ~/workshop && cd ~/workshop
 git clone https://github.com/phefley/cc14-ai-hacking-workshop
+git clone https://github.com/microsoft/AI-Red-Teaming-Playground-Labs
 ```
 
 ## 2 — Ollama Models
@@ -93,12 +98,23 @@ uv venv venvs/pyrit-venv
 source venvs/pyrit-venv/bin/activate
 uv pip install -r cc14-ai-hacking-workshop/ollama/02-hack-a-chatbot/02.05-pyrit/frozen-requirements.txt
 ```
+## 7 — Microsoft AI Red Teaming Playground Labs
+
+Pre-build the Docker containers so they're ready for the workshop.
+
+```bash
+cd ~/workshop/AI-Red-Teaming-Playground-Labs
+docker compose up
+```
+
+This will build the containers but won't fully work yet — during the workshop we'll provide a `.env` file with the Azure endpoint, then run `docker compose up` again.
 
 ## Checklist
 
 - [ ] `ollama list` shows `llama3:8b`, `llama3.2:1b`, and `nomic-embed-text`
 - [ ] `ollama run llama3.2:1b` responds to prompts
 - [ ] Workshop repo cloned
+- [ ] `AI-Red-Teaming-Playground-Labs` repo cloned, `docker compose up` ran once
 - [ ] `ollama-venv` created, `requirements.txt` installed
 - [ ] `garak-venv` created, garak cloned & installed, custom generator copied
 - [ ] `giskard-venv` created (Python 3.11), giskard & litellm installed
