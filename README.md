@@ -38,3 +38,8 @@ You can find instructions for getting setup for the workshop [here](./setup.md).
 * [03.01 - Adding Pattern Defenses](./ollama/03-secure-a-chatbot/03.01-defense-patterns/03.01-instructions.md)
 * [03.02 - Adding Advanced LLM Defenses](./ollama/03-secure-a-chatbot/03.02-defense-llm/03.02-instructions.md)
 
+## Feedback
+Your feedback is important to us!
+If you feel strongly about something in particular, please let us know at the link below.
+https://forms.office.com/r/Zm0L4iumzc
+
