@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP + RAG Chatbot</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #f5af19 0%, #f12711 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .chat-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 800px;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, #f5af19 0%, #f12711 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: #f7f7f7;
+        }
+
+        .message {
+            margin-bottom: 16px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .message.user {
+            align-items: flex-end;
+        }
+
+        .message.assistant {
+            align-items: flex-start;
+        }
+
+        .message-content {
+            max-width: 70%;
+            padding: 12px 16px;
+            border-radius: 12px;
+            line-height: 1.5;
+            word-wrap: break-word;
+        }
+
+        .message.user .message-content {
+            background: #e6a817;
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .message.assistant .message-content {
+            background: white;
+            color: #333;
+            border: 1px solid #e0e0e0;
+            border-bottom-left-radius: 4px;
+        }
+
+        .message-label {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+
+        .context-info {
+            font-size: 11px;
+            color: #666;
+            margin-top: 6px;
+            padding: 8px;
+            background: #f0f0f0;
+            border-radius: 6px;
+            max-width: 70%;
+            cursor: pointer;
+        }
+
+        .context-info:hover {
+            background: #e8e8e8;
+        }
+
+        .context-details {
+            display: none;
+            margin-top: 6px;
+            padding: 8px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 10px;
+            white-space: pre-wrap;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        .context-details.visible {
+            display: block;
+        }
+
+        .chat-input-container {
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .chat-input-wrapper {
+            display: flex;
+            gap: 10px;
+        }
+
+        #messageInput {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 24px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        #messageInput:focus {
+            border-color: #e6a817;
+        }
+
+        #sendButton {
+            padding: 12px 28px;
+            background: linear-gradient(135deg, #f5af19 0%, #f12711 100%);
+            color: white;
+            border: none;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        #sendButton:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(245, 175, 25, 0.4);
+        }
+
+        #sendButton:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .typing-indicator {
+            display: none;
+            padding: 12px 16px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            border-bottom-left-radius: 4px;
+            max-width: 70px;
+        }
+
+        .typing-indicator.visible {
+            display: block;
+        }
+
+        .typing-indicator span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #999;
+            border-radius: 50%;
+            margin: 0 2px;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+                opacity: 0.7;
+            }
+            30% {
+                transform: translateY(-10px);
+                opacity: 1;
+            }
+        }
+
+        .error-message {
+            background: #fee;
+            color: #c33;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 10px 20px;
+            border: 1px solid #fcc;
+        }
+
+        .clear-button {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 16px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .clear-button:hover {
+            background: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            MCP + RAG Chatbot
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            <div class="message assistant">
+                <div class="message-label">Assistant</div>
+                <div class="message-content">
+                    Hello! I'm your MCP-powered RAG assistant. I can answer questions from my knowledge base, call external tools (like getting the system time), read MCP resources, and use prompt templates. Try asking "What time is it?" or "What can you do?"
+                </div>
+            </div>
+        </div>
+        
+        <div class="chat-input-container">
+            <div class="chat-input-wrapper">
+                <input 
+                    type="text" 
+                    id="messageInput" 
+                    placeholder="Type your message here..." 
+                    autocomplete="off"
+                />
+                <button id="sendButton">Send</button>
+            </div>
+            <button class="clear-button" id="clearButton">Clear Conversation</button>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const API_URL = 'http://localhost:8000/chatbot/';
+        const CLEAR_URL = 'http://localhost:8000/clear-session';
+        
+        // Generate or retrieve session ID
+        let sessionId = localStorage.getItem('chatSessionId');
+        if (!sessionId) {
+            sessionId = 'session-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+            localStorage.setItem('chatSessionId', sessionId);
+        }
+
+        // DOM elements
+        const chatMessages = document.getElementById('chatMessages');
+        const messageInput = document.getElementById('messageInput');
+        const sendButton = document.getElementById('sendButton');
+        const clearButton = document.getElementById('clearButton');
+
+        // Add message to chat
+        function addMessage(role, content, context = null) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${role}`;
+            
+            const labelDiv = document.createElement('div');
+            labelDiv.className = 'message-label';
+            labelDiv.textContent = role === 'user' ? 'You' : 'Assistant';
+            
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'message-content';
+            contentDiv.textContent = content;
+            
+            messageDiv.appendChild(labelDiv);
+            messageDiv.appendChild(contentDiv);
+            
+            // Add context info if available (for assistant messages)
+            if (role === 'assistant' && context) {
+                const contextInfo = document.createElement('div');
+                contextInfo.className = 'context-info';
+                contextInfo.textContent = '📄 Context used (click to expand)';
+                
+                const contextDetails = document.createElement('div');
+                contextDetails.className = 'context-details';
+                contextDetails.textContent = context;
+                
+                contextInfo.addEventListener('click', () => {
+                    contextDetails.classList.toggle('visible');
+                });
+                
+                messageDiv.appendChild(contextInfo);
+                messageDiv.appendChild(contextDetails);
+            }
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Show typing indicator
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'message assistant';
+            typingDiv.id = 'typingIndicator';
+            
+            const labelDiv = document.createElement('div');
+            labelDiv.className = 'message-label';
+            labelDiv.textContent = 'Assistant';
+            
+            const indicatorDiv = document.createElement('div');
+            indicatorDiv.className = 'typing-indicator visible';
+            indicatorDiv.innerHTML = '<span></span><span></span><span></span>';
+            
+            typingDiv.appendChild(labelDiv);
+            typingDiv.appendChild(indicatorDiv);
+            chatMessages.appendChild(typingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Remove typing indicator
+        function hideTypingIndicator() {
+            const indicator = document.getElementById('typingIndicator');
+            if (indicator) {
+                indicator.remove();
+            }
+        }
+
+        // Show error message
+        function showError(message) {
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-message';
+            errorDiv.textContent = `Error: ${message}`;
+            chatMessages.appendChild(errorDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            setTimeout(() => errorDiv.remove(), 5000);
+        }
+
+        // Send message to API
+        async function sendMessage() {
+            const message = messageInput.value.trim();
+            if (!message) return;
+
+            // Add user message to chat
+            addMessage('user', message);
+            messageInput.value = '';
+            
+            // Disable input while processing
+            sendButton.disabled = true;
+            messageInput.disabled = true;
+            showTypingIndicator();
+
+            try {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 300000); // 5 min timeout
+
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        message: message,
+                        session_id: sessionId
+                    }),
+                    signal: controller.signal
+                });
+
+                clearTimeout(timeoutId);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                
+                hideTypingIndicator();
+                addMessage('assistant', data.response, data.context_used);
+
+            } catch (error) {
+                console.error('Error:', error);
+                hideTypingIndicator();
+                showError(error.message || 'Failed to get response from server');
+            } finally {
+                sendButton.disabled = false;
+                messageInput.disabled = false;
+                messageInput.focus();
+            }
+        }
+
+        // Clear conversation
+        async function clearConversation() {
+            if (!confirm('Are you sure you want to clear this conversation?')) {
+                return;
+            }
+
+            try {
+                await fetch(`${CLEAR_URL}/${sessionId}`, {
+                    method: 'DELETE'
+                });
+
+                // Clear messages except welcome message
+                chatMessages.innerHTML = `
+                    <div class="message assistant">
+                        <div class="message-label">Assistant</div>
+                        <div class="message-content">
+                            Hello! I'm your MCP-powered RAG assistant. I can answer questions from my knowledge base, call external tools (like getting the system time), read MCP resources, and use prompt templates. Try asking "What time is it?" or "What can you do?"
+                        </div>
+                    </div>
+                `;
+
+                // Generate new session ID
+                sessionId = 'session-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+                localStorage.setItem('chatSessionId', sessionId);
+
+            } catch (error) {
+                console.error('Error clearing session:', error);
+                showError('Failed to clear conversation');
+            }
+        }
+
+        // Event listeners
+        sendButton.addEventListener('click', sendMessage);
+        clearButton.addEventListener('click', clearConversation);
+
+        messageInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        // Focus input on load
+        messageInput.focus();
+    </script>
+</body>
+</html>
