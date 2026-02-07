@@ -72,7 +72,7 @@ Large download.
 cd ~/workshop
 uv venv venvs/garak-venv
 source venvs/garak-venv/bin/activate
-mkdir -p tools
+mkdir tools
 git clone https://github.com/NVIDIA/garak tools/garak-repo
 cd tools/garak-repo
 uv pip install -e .
