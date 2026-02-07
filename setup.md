@@ -83,6 +83,7 @@ cd tools/garak-repo
 uv pip install -e .
 cd ~/workshop
 ```
+> Windows: use `copy cc14-ai-hacking-workshop\ollama\02-hack-a-chatbot\02.03-garak\custom-chatbot.py tools\garak-repo\garak\generators\` instead of `cp ...`
 
 ## 5 — Giskard (section 2.04)
 
