@@ -83,7 +83,8 @@ cd tools/garak-repo
 uv pip install -e .
 cd ~/workshop
 ```
-> Windows: use `copy cc14-ai-hacking-workshop\ollama\02-hack-a-chatbot\02.03-garak\custom-chatbot.py tools\garak-repo\garak\generators\` instead of `cp ...`
+> Windows: use `venvs\garak-venv\Scripts\activate` instead of `source...` and
+> `copy cc14-ai-hacking-workshop\ollama\02-hack-a-chatbot\02.03-garak\custom-chatbot.py tools\garak-repo\garak\generators\` instead of `cp ...`
 
 ## 5 — Giskard (section 2.04)
 
@@ -96,6 +97,7 @@ source venvs/giskard-venv/bin/activate
 uv pip install "giskard[llm]"
 uv pip install litellm==1.71.1
 ```
+> Windows: use `venvs\giskard-venv\Scripts\activate` instead of `source ...`
 
 ## 6 — PyRIT (section 2.05)
 
@@ -105,6 +107,8 @@ uv venv venvs/pyrit-venv
 source venvs/pyrit-venv/bin/activate
 uv pip install -r cc14-ai-hacking-workshop/ollama/02-hack-a-chatbot/02.05-pyrit/frozen-requirements.txt
 ```
+> Windows: use `venvs\pyrit-venv\Scripts\activate` instead of `source ...`
+
 ## 7 — Microsoft AI Red Teaming Playground Labs
 
 Pre-build the Docker containers so they're ready for the workshop.
