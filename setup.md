@@ -5,7 +5,8 @@ It may not be reliable to download the required packages over conference wifi on
 
 ## Prerequisites
 
-Try to have at least 100GB available on your harddrive before starting this process. (
+Have at least 100GB available on your harddrive before starting this process. Some of the files are large.
+
 Additionally, laptops should have at least 16Gb of ram, with 32Gb+ ram preferred, to run the exercises. 
 
 Install the following:
