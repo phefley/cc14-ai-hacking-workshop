@@ -17,8 +17,8 @@ Install the following:
 - **Docker** — https://docs.docker.com/engine/install/
   - Linux: also install the compose plugin — `sudo apt-get install docker-compose-plugin`
   - Docker Desktop (Windows/macOS) includes compose already.
-    - On windows, you may also need to update windows subsystem for linux > wsl --update
-    - Open docker desktop and make sure Docker Engine is running before running docker compose later in this guide.
+    - On windows, you may also need to update Windows Subsystem for Linux > `wsl --update`
+    - Open docker desktop and make sure Docker Engine is running (or launch Docker Desktop) before running docker compose later in this guide.
 
 ## Folder Structure
 
@@ -38,9 +38,14 @@ Install the following:
 ## 1 — Clone this Repo
 
 ```bash
-mkdir -p ~/workshop && cd ~/workshop
+mkdir ~/workshop && cd ~/workshop
 git clone https://github.com/phefley/cc14-ai-hacking-workshop
 git clone https://github.com/microsoft/AI-Red-Teaming-Playground-Labs
+```
+To check for and receive updates run:
+```bash
+git status
+git pull --rebase origin main
 ```
 
 ## 2 — Ollama Models
@@ -72,7 +77,7 @@ Large download.
 cd ~/workshop
 uv venv venvs/garak-venv
 source venvs/garak-venv/bin/activate
-mkdir -p tools
+mkdir tools
 git clone https://github.com/NVIDIA/garak tools/garak-repo
 cd tools/garak-repo
 uv pip install -e .
@@ -83,6 +88,8 @@ cd tools/garak-repo
 uv pip install -e .
 cd ~/workshop
 ```
+> Windows: use `venvs\garak-venv\Scripts\activate` instead of `source...` and
+> `copy cc14-ai-hacking-workshop\ollama\02-hack-a-chatbot\02.03-garak\custom-chatbot.py tools\garak-repo\garak\generators\` instead of `cp ...`
 
 ## 5 — Giskard (section 2.04)
 
@@ -95,6 +102,7 @@ source venvs/giskard-venv/bin/activate
 uv pip install "giskard[llm]"
 uv pip install litellm==1.71.1
 ```
+> Windows: use `venvs\giskard-venv\Scripts\activate` instead of `source ...`
 
 ## 6 — PyRIT (section 2.05)
 
@@ -104,6 +112,8 @@ uv venv venvs/pyrit-venv
 source venvs/pyrit-venv/bin/activate
 uv pip install -r cc14-ai-hacking-workshop/ollama/02-hack-a-chatbot/02.05-pyrit/frozen-requirements.txt
 ```
+> Windows: use `venvs\pyrit-venv\Scripts\activate` instead of `source ...`
+
 ## 7 — Microsoft AI Red Teaming Playground Labs
 
 Pre-build the Docker containers so they're ready for the workshop.
@@ -112,6 +122,8 @@ Pre-build the Docker containers so they're ready for the workshop.
 cd ~/workshop/AI-Red-Teaming-Playground-Labs
 docker compose up
 ```
+
+If you see error text like 'unable to get image', make sure to launch Docker Engine (or Docker Desktop) first.
 
 This will build the containers but won't fully work yet — during the workshop we'll provide a `.env` file with the Azure endpoint, then run `docker compose up` again.
 After composing, you can quit docker and feel free to restart your laptop ahead of the workshop. We're go for launch!
