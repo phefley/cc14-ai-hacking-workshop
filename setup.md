@@ -13,6 +13,8 @@ Install the following:
 - **Docker** — https://docs.docker.com/engine/install/
   - Linux: also install the compose plugin — `sudo apt-get install docker-compose-plugin`
   - Docker Desktop (Windows/macOS) includes compose already.
+    - On windows, you may also need to update windows subsystem for linux > wsl --update
+    - Open docker desktop and make sure Docker Engine is running before running docker compose later in this guide.
 
 ## Folder Structure
 
