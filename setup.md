@@ -38,7 +38,7 @@ Install the following:
 ## 1 — Clone this Repo
 
 ```bash
-mkdir -p ~/workshop && cd ~/workshop
+mkdir ~/workshop && cd ~/workshop
 git clone https://github.com/phefley/cc14-ai-hacking-workshop
 git clone https://github.com/microsoft/AI-Red-Teaming-Playground-Labs
 ```
