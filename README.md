@@ -39,8 +39,15 @@ You can find instructions for getting setup for the workshop [here](./setup.md).
 * [03.01 - Adding Pattern Defenses](./ollama/03-secure-a-chatbot/03.01-defense-patterns/03.01-instructions.md)
 * [03.02 - Adding Advanced LLM Defenses](./ollama/03-secure-a-chatbot/03.02-defense-llm/03.02-instructions.md)
 
+## Responsible Use
+
+This workshop is provided for educational purposes only. The techniques, tools, and methodologies presented here are intended to help cybersecurity professionals understand emerging AI security topics and develop the skills needed to identify, assess, and remediate vulnerabilities in AI systems.
+
+Authorized security testing is a critical component of any enterprise cyber resilience program. Participants are expected to apply the knowledge gained in this workshop only within the bounds of explicit authorization. Conducting security testing against systems or assets without proper authorization is illegal and may result in civil and criminal liability.
+
+By participating in this workshop, you acknowledge that you are solely responsible for ensuring your activities comply with all applicable laws, regulations, and organizational policies.
+
 ## Feedback
 Your feedback is important to us!
 If you feel strongly about something in particular, please let us know at the link below.
 https://forms.office.com/r/Zm0L4iumzc
-
