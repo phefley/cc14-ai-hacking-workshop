@@ -5,6 +5,9 @@ It may not be reliable to download the required packages over conference wifi on
 
 ## Prerequisites
 
+Try to have at least 100GB available on your harddrive before starting this process. (
+Additionally, laptops should have at least 16Gb of ram, with 32Gb+ ram preferred, to run the exercises. 
+
 Install the following:
 
 - **uv** — https://docs.astral.sh/uv/getting-started/installation/ -if you don't have python already, installing uv will install it.
