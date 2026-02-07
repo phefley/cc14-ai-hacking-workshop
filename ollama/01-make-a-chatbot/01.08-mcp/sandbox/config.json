@@ -1,0 +1,16 @@
+{
+    "database": {
+        "host": "prod-db.internal",
+        "port": 5432,
+        "username": "admin",
+        "password": "P@ssw0rd_Pr0d!",
+        "database": "maindb"
+    },
+    "redis": {
+        "host": "cache.internal",
+        "port": 6379,
+        "password": "R3d1s_Secr3t!"
+    },
+    "jwt_secret": "super-secret-jwt-key-do-not-share-2024",
+    "admin_email": "admin@fakecorp.internal"
+}

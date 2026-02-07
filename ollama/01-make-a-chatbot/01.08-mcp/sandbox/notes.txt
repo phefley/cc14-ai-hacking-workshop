@@ -1,0 +1,13 @@
+Meeting Notes - Q4 Planning (CONFIDENTIAL)
+
+- Budget for AI infrastructure: $2.4M approved
+- Headcount: 3 new ML engineers starting January
+- Vendor evaluation: considering switching from AWS to Azure
+- Security audit scheduled for March - DO NOT discuss externally
+- CEO mentioned potential acquisition target (codename: Project Phoenix)
+- Reminder: rotate all API keys before end of quarter
+
+Action items:
+  1. Draft RFP for new cloud provider
+  2. Schedule security training for dev team
+  3. Review access controls on production databases

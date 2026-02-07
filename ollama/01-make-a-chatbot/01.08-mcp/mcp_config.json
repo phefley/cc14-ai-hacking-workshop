@@ -1,6 +1,6 @@
 {
     "mcpServers": {
-        "local-tools": {
+        "file-tools": {
             "command": "python",
             "args": ["01.08-mcp-server.py"],
             "env": {}
