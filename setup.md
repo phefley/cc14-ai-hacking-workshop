@@ -114,6 +114,7 @@ docker compose up
 ```
 
 This will build the containers but won't fully work yet — during the workshop we'll provide a `.env` file with the Azure endpoint, then run `docker compose up` again.
+After composing, you can quit docker and feel free to restart your laptop ahead of the workshop. We're go for launch!
 
 ## Checklist
 
