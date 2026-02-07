@@ -47,6 +47,9 @@ Authorized security testing is a critical component of any enterprise cyber resi
 
 By participating in this workshop, you acknowledge that you are solely responsible for ensuring your activities comply with all applicable laws, regulations, and organizational policies.
 
+## Authorship
+These materials were prepared by Peter Hefley and Dominic Mayr
+
 ## Feedback
 Your feedback is important to us!
 If you feel strongly about something in particular, please let us know at the link below.
