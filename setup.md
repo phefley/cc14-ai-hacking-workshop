@@ -42,6 +42,11 @@ mkdir ~/workshop && cd ~/workshop
 git clone https://github.com/phefley/cc14-ai-hacking-workshop
 git clone https://github.com/microsoft/AI-Red-Teaming-Playground-Labs
 ```
+To check for and receive updates run:
+```bash
+git status
+git pull --rebase origin main
+```
 
 ## 2 — Ollama Models
 
