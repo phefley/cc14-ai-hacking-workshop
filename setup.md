@@ -17,8 +17,8 @@ Install the following:
 - **Docker** — https://docs.docker.com/engine/install/
   - Linux: also install the compose plugin — `sudo apt-get install docker-compose-plugin`
   - Docker Desktop (Windows/macOS) includes compose already.
-    - On windows, you may also need to update windows subsystem for linux > wsl --update
-    - Open docker desktop and make sure Docker Engine is running before running docker compose later in this guide.
+    - On windows, you may also need to update Windows Subsystem for Linux > `wsl --update`
+    - Open docker desktop and make sure Docker Engine is running (or launch Docker Desktop) before running docker compose later in this guide.
 
 ## Folder Structure
 
@@ -117,6 +117,8 @@ Pre-build the Docker containers so they're ready for the workshop.
 cd ~/workshop/AI-Red-Teaming-Playground-Labs
 docker compose up
 ```
+
+If you see error text like 'unable to get image', make sure to launch Docker Engine (or Docker Desktop) first.
 
 This will build the containers but won't fully work yet — during the workshop we'll provide a `.env` file with the Azure endpoint, then run `docker compose up` again.
 After composing, you can quit docker and feel free to restart your laptop ahead of the workshop. We're go for launch!
