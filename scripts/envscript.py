@@ -30,8 +30,8 @@ def update_env_file():
     replacements = {
         "YOUR_SECRET_KEY": secret_key,
         "YOUR_AUTH_KEY": auth_key,
-        "https://YOUR_AOAI_ENDPOINT": "YOUR_AOAI_ENDPOINT",
-        "YOUR_AOAI_API_KEY": "YOUR_AOAI_API_KEY"  # This keeps the placeholder as-is
+        "https://YOUR_AOAI_ENDPOINT": "MY_AOAI_ENDPOINT",
+        "YOUR_AOAI_API_KEY": "MY_AOAI_API_KEY"  # This keeps the placeholder as-is
     }
     
     # Read the .env file
