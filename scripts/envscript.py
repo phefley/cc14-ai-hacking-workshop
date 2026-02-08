@@ -30,8 +30,8 @@ def update_env_file():
     replacements = {
         "YOUR_SECRET_KEY": secret_key,
         "YOUR_AUTH_KEY": auth_key,
-        "https://YOUR_AOAI_ENDPOINT": "https://mrdo-mk7d3xhg-eastus2.cognitiveservices.azure.com",
-        "YOUR_AOAI_API_KEY": "8MQcWBfpAgO67P9MiHXF9ryvPVESkLuAsNC8v4sJpQ9i1PiuagS8JQQJ99CAACHYHv6XJ3w3AAAAACOGOgv3"  # This keeps the placeholder as-is
+        "https://YOUR_AOAI_ENDPOINT": "YOUR_AOAI_ENDPOINT",
+        "YOUR_AOAI_API_KEY": "YOUR_AOAI_API_KEY"  # This keeps the placeholder as-is
     }
     
     # Read the .env file
