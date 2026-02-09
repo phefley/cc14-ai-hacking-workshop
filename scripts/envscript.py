@@ -30,8 +30,8 @@ def update_env_file():
     replacements = {
         "YOUR_SECRET_KEY": secret_key,
         "YOUR_AUTH_KEY": auth_key,
-        "https://YOUR_AOAI_ENDPOINT": "MY_AOAI_ENDPOINT",
-        "YOUR_AOAI_API_KEY": "MY_AOAI_API_KEY"  # This keeps the placeholder as-is
+        "https://YOUR_AOAI_ENDPOINT": "put-your-endpoint-here",
+        "YOUR_AOAI_API_KEY": "put-your-api-key-here" # The API key from the workshop has been revoked.
     }
     
     # Read the .env file
