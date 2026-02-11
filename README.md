@@ -54,3 +54,12 @@ These materials were prepared by Peter Hefley and Dominic Mayr
 Your feedback is important to us!
 If you feel strongly about something in particular, please let us know at the link below.
 https://forms.office.com/r/Zm0L4iumzc
+
+## Slides
+
+We intended for the slides to really be a side course, not the main dish. We had enough folks ask that we posted the slides [here](http://mycard.peterhefley.net/cc14-slides.pdf).
+
+## THANK YOU!
+
+Thank you to all the CactusCon participants who made it out, on a Saturday afternoon, to learn some AI with us. <3
+
